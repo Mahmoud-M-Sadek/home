@@ -1,0 +1,7 @@
+{
+  "name": "Homefy - هوميڤاي",
+  "description": "منصة التجارة الإلكترونية المصرية الأولى للأدوات المنزلية الخفيفة ومستلزمات المطبخ.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
