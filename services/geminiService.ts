@@ -1,13 +1,13 @@
 import { GoogleGenAI } from "@google/genai";
 
-const apiKey = process.env.API_KEY || ''; // Ensure this is set in environment
-const ai = new GoogleGenAI({ apiKey });
+const apiKey = process.env.API_KEY || '';
+const ai = new GoogleGenAI({ apiKey: apiKey });
 
 export const getChatResponse = async (userMessage: string, history: string[]): Promise<string> => {
   try {
     if (!apiKey) return "عذراً، خدمة المحادثة غير متوفرة حالياً (API Key missing).";
 
-    const model = 'gemini-2.5-flash';
+    const model = 'gemini-3-flash-preview';
     const systemInstruction = `
       أنت مساعد ذكي لمنصة "Homefy - هوميڤاي" للتجارة الإلكترونية في مصر.
       تخصص المنصة: بيع الأدوات المنزلية الخفيفة (مطبخ، تنظيم، ديكور، نظافة).

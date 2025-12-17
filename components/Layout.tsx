@@ -4,7 +4,7 @@ import { ShoppingCart, Search, User, Menu, X, Home, LogOut, LayoutDashboard, Tru
 import { UserRole } from '../types';
 
 interface LayoutProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   userRole: UserRole;
   cartCount: number;
   onLogout: () => void;
@@ -17,20 +17,16 @@ export const Header: React.FC<LayoutProps> = ({ userRole, cartCount, onLogout, o
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would filter or navigate
   };
 
   return (
     <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-gray-100">
-      {/* Top Bar */}
       <div className="bg-teal-700 text-white text-xs py-1 text-center hidden sm:block">
         شحن مجاني للطلبات فوق ٥٠٠ جنيه لفترة محدودة! 🚚
       </div>
 
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between gap-4">
-          
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <div className="relative">
               <Home className="text-teal-600 w-8 h-8 group-hover:scale-110 transition-transform" />
@@ -42,7 +38,6 @@ export const Header: React.FC<LayoutProps> = ({ userRole, cartCount, onLogout, o
             </div>
           </Link>
 
-          {/* Search Bar (Desktop) */}
           <div className="hidden md:flex flex-1 max-w-xl relative mx-8">
             <form onSubmit={handleSearch} className="w-full">
               <input 
@@ -56,7 +51,6 @@ export const Header: React.FC<LayoutProps> = ({ userRole, cartCount, onLogout, o
             </form>
           </div>
 
-          {/* Actions */}
           <div className="flex items-center gap-3 sm:gap-6">
             {userRole === UserRole.GUEST ? (
               <button onClick={onLogin} className="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-teal-600">
@@ -75,11 +69,6 @@ export const Header: React.FC<LayoutProps> = ({ userRole, cartCount, onLogout, o
                     <LayoutDashboard size={16} /> الإدارة
                   </Link>
                 )}
-                {userRole === UserRole.CUSTOMER && (
-                   <Link to="/profile" className="hidden sm:flex items-center gap-1 text-gray-600 hover:text-teal-600">
-                     <User size={20} />
-                  </Link>
-                )}
                  <button onClick={onLogout} className="text-gray-400 hover:text-red-500" title="تسجيل خروج">
                     <LogOut size={20} />
                 </button>
@@ -95,14 +84,12 @@ export const Header: React.FC<LayoutProps> = ({ userRole, cartCount, onLogout, o
               )}
             </Link>
 
-             {/* Mobile Menu Toggle */}
              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden text-gray-600">
                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
              </button>
           </div>
         </div>
 
-        {/* Mobile Search */}
         <div className="mt-3 md:hidden">
             <input 
               type="text" 
@@ -112,7 +99,6 @@ export const Header: React.FC<LayoutProps> = ({ userRole, cartCount, onLogout, o
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 p-4 space-y-3">
           <Link to="/" className="block py-2 text-gray-700 font-medium">الرئيسية</Link>
@@ -121,9 +107,6 @@ export const Header: React.FC<LayoutProps> = ({ userRole, cartCount, onLogout, o
           <hr />
           <Link to="/track-order" className="flex items-center gap-2 py-2 text-gray-600">
              <Truck size={18} /> تتبع طلبك
-          </Link>
-          <Link to="/wishlist" className="flex items-center gap-2 py-2 text-gray-600">
-             <Heart size={18} /> المفضلة
           </Link>
         </div>
       )}
@@ -135,7 +118,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-900 text-white pt-12 pb-6 mt-auto">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-right">
           <div>
             <div className="flex items-center gap-2 mb-4">
                <Home className="text-teal-500" />
@@ -160,18 +143,16 @@ export const Footer: React.FC = () => {
               <li><a href="#" className="hover:text-white">تتبع الطلب</a></li>
               <li><a href="#" className="hover:text-white">سياسة الاسترجاع</a></li>
               <li><a href="#" className="hover:text-white">الشروط والأحكام</a></li>
-              <li><a href="#" className="hover:text-white">اتصل بنا</a></li>
             </ul>
           </div>
           <div>
             <h3 className="font-bold text-lg mb-4 text-teal-500">طرق الدفع</h3>
-            <div className="flex gap-2 mb-4">
-               {/* Simulating Payment Icons */}
+            <div className="flex gap-2 mb-4 flex-wrap">
                <div className="bg-white text-red-600 px-2 py-1 text-xs font-bold rounded">Vodafone</div>
                <div className="bg-white text-blue-800 px-2 py-1 text-xs font-bold rounded">Fawry</div>
                <div className="bg-white text-gray-800 px-2 py-1 text-xs font-bold rounded">Cash</div>
             </div>
-            <p className="text-xs text-gray-500">© 2024 Homefy Egypt. All rights reserved.</p>
+            <p className="text-xs text-gray-500 font-bold">© 2025 mahmoud sadek | +201030417663</p>
           </div>
         </div>
       </div>

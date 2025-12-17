@@ -61,7 +61,7 @@ const Login: React.FC = () => {
 
       </div>
       
-      <p className="mt-8 text-xs text-gray-400">© 2024 Homefy Demo</p>
+      <p className="mt-8 text-xs text-gray-400 font-bold text-center">© 2025 mahmoud sadek | +201030417663</p>
     </div>
   );
 };
